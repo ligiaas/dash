@@ -267,7 +267,7 @@ HTML= """
     vertical-align: top;
   }
   .divSmall{
-    display: -webkit-inline-box;
+    display: inline-block;
     width: 150px;
     vertical-align: top;
   }
