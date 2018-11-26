@@ -206,7 +206,6 @@ grafico_hora = sorted(grafico_hora, key=lambda d: d['hour'])
 data = {
     "dataProvider": grafico_hora,
     "boxes": [
-      {"indice": i_sat[0], "hint": "ZERO INDICAÇÕES", "value": hc, "alert_color": lista_cor[0]},
       {"indice": i_sat[1], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[1]},
       {"indice": i_sat[2], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[2]},
       {"indice": i_sat[3], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "alert_color": lista_cor[3]},
@@ -225,7 +224,7 @@ HTML= """
   }
   .divLarge{
     display: inline-block;
-    width: calc(100%% - 155px);
+    width: 100%%;
     vertical-align: top;
   }
   .divSmall{
@@ -248,22 +247,32 @@ HTML= """
     background: #d8d8d8;
     padding: 12px;
   }
+  .box_top {
+    display: -webkit-inline-box;
+    width: 100%%;
+  }
   .box_title{
-    padding: 40px 0;
-    font-size: 4em;
+    font-size: 1.6em;
+    margin: 4px;
     text-align: center;
+    padding: 10px;
+    background-color: #edeeef;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: inline-block;
+    width: 96%%;
   }
   .indice_sup{
     color: #333333;
-    display: block;
-    font-size: 2.2em;
+    display: inline-block;
+    font-size: 1.3em;
     line-height: .7em;
     padding-top: 10px;
   }
   .number_sup{
     display: inline-block;
     color: #F3EBF5;
-    font-size: 2.2em;
+    font-size: 1.2em;
     line-height: .7em;
     padding-top: 10px;
     vertical-align: top;
@@ -281,14 +290,15 @@ HTML= """
     padding: 10px;
   }
   .graph_divider_2{
+    border: 1px solid;
     display: inline-block;
-    width: calc(50%% - 35px);
+    width: calc(50%% - 4px);
   }
   .total_height{
     height: 100%%;
   }
   .height_max{
-    height: 100px;
+    height: 50%%;
   }
   .height_divider{
     height: 100%%;
@@ -300,42 +310,56 @@ HTML= """
   #box02, #box04{
     width: 100%%;
   }
-  
-  .cs-title {
-    background-color: #edeeef;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  .cs_mb_20 {
+    margin-bottom: 20px;
   }
-  .cs-title > h3 {
-    margin: 10px 20px;
-  }
-  .cs-mb-30 {
-    margin-bottom: 30px;
-  }
-  .cs-md-2 {
-    width: 20%%;
+  .cs_md_2 {
+    width: 15.6%%;
+    margin: 5px 2px;
     float: left;
     position: relative;
     min-height: 1px;
     padding: 2px;
   }
-  .cs-md-6 {
+  .cs_md_6 {
     width: 50%%;
     float: left;
     position: relative;
     min-height: 1px;
     padding: 2px;
   }
-  .cs-md-offset-2 {
+  .cs_md_12 {
+    width: 96%%;
+    margin: 0px;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding: 2px;
+  }
+  .cs_md_offset_2 {
     margin: 0 4.165%% 0 12.495%%;;
   }
-  .cs-md-offset-3 {
+  .cs_md_offset_3 {
     margin: 0 12.5%%;
   }
-  .cs-heading {
+  .cs_indice {
+    display: block;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 1.4em;
     font-weight: bold;
   }
-  .cs-card {
+  .cs_box {
+    color: #fff;
+    height: 40px;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .cs_card {
     margin-right: 10px;
     padding: 20px 10px;
     border: 0px solid #ccc;
@@ -347,20 +371,25 @@ HTML= """
     display: block;
     text-align: center;
   }
-  span > .cs-color-green {
+  span > .cs_color_green {
     color: #4ba243;
   }
-  span > .cs-color-gray {
+  span > .cs_color_gray {
     color: #c9c9ca;
   }
-  span > .cs-color-red {
+  span > .cs_color_red {
     color: #d31925;
   }
-  .sub-title {
-    margin-top: 5px;
+  .cs_subtitle {
+    font-size: 1.2em;
     font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    width: 96%%;
+    position: relative;
+    min-height: 1px;
   }
-  .cs-destak {
+  .cs_destak {
     font-size: 60px;
     margin-top: -10px;
     margin-bottom: 0px;
@@ -373,23 +402,34 @@ HTML= """
 
 <div class="div_panel">
   <div class="total_height">
-    <!-- <div class="divSmall height_max box_top"></div> -->
     <div class="divLarge height_max">
       <div class="height_divider">
-        <div class="box_grafico graph_divider_2 total_height">
-          <div class="divSmall height_max box_top" id="box01"></div>
+        <div class="graph_divider_2 total_height">
+          <div class="divSmall height_max" id="box01">
+            <div class="box_title cs_mb_20">Qual a probabilidade de você recomendar o Sofie a um amigo?</div>
+            <div class="box_top"></div>
+            <div class="cs_md_12"><div class="cs_subtitle">Detratores (1 -5)</div></div>
+          </div>
         </div>
-        <div class="box_grafico graph_divider_2 total_height">
-          <div class="divSmall height_max box_top" id="box03"></div>
+        <div class="graph_divider_2 total_height">
+          <div class="divSmall height_max" id="box03">
+            <div class="box_title cs_mb_20">Qual a probabilidade de você recomendar o Sofie a um amigo?</div>
+            <div class="box_top"></div>
+            <div class="cs_md_12"><div class="cs_subtitle">Detratores (1 -5)</div></div>
+          </div>
         </div>
       </div>
       <div class="height_divider">
         <div class="total_height" style="vertical-align: top;">
-          <div class="box_grafico graph_divider_2 total_height">
-            <div class="divSmall height_max box_top" id="box02"></div>
+          <div class="graph_divider_2 total_height">
+            <div class="divSmall height_max" id="box02">
+              <div class="box_title cs_mb_20">Qual a probabilidade de você recomendar o Sofie a um amigo?</div>
+              <div class="box_top"></div>
+              <div class="cs_md_12"><div class="cs_subtitle">Detratores (1 -5)</div></div>
+            </div>
           </div>
-          <div class="box_grafico graph_divider_2 total_height">
-            <div class="divSmall height_max box_top" id="box04"></div>
+          <div class="graph_divider_2 total_height">
+            <div class="divSmall height_max" id="box04"></div>
           </div>
         </div>
       </div>
@@ -415,6 +455,7 @@ HTML= """
       for (var i=0; i < data.boxes.length; i++){
         var obj = data.boxes[i];
         var estilo = '';
+        htmlTopo += '<div class="cs_md_2">'
         if(obj.alert_color){
           estilo = 'background: '+obj.alert_color+' !important';
         }
@@ -422,15 +463,16 @@ HTML= """
           htmlTopo += '<div class="box_sup linkTopo" style="'+estilo+'" data-link='+obj.link+' data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
         }
         if(obj.indice){
-          htmlTopo += '<div class="indice_sup">'+obj.indice+'</div>';
+          htmlTopo += '<div class="cs_indice">'+obj.indice+'</div>';
         }
         else{
-          htmlTopo += '<div class="box_sup" style="'+estilo+'" data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
+          htmlTopo += '<div class="box_sup cs_mb_20" data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
         }
-        htmlTopo += '<div class="number_sup">'+obj.value+ (obj.symbol ? obj.symbol : '') +'</div>';
+        htmlTopo += '<div class="cs_box" style="'+estilo+'">'+obj.value+ (obj.symbol ? obj.symbol : '');
         if(obj.percent_value){
-          htmlTopo += '<div class="number_sup">(' + obj.percent_value + ')</div>';
+          htmlTopo += '<div class="cs_box">(' + obj.percent_value + ')</div></div>';
         }
+        htmlTopo += '</div>';
         htmlTopo += '</div>';
       }
 
