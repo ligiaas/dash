@@ -178,8 +178,8 @@ if len(lista_duracao) > 0:
     remove_outliner = removeOutliners(media_serie)
     media = secondsToHours(remove_outliner.mean())
 
-i_sat = ['1', '2', '3', '4', '5']
-cs_agents = ['Detratores', 'Passivos', 'Promotores']
+product = "Sofie"
+i_sat = ['0', '1', '2', '3', '4', '5']
 total_atendimentos = TABELA_PRINCIPAL['TOTAL']['total']
 t_transf = TABELA_PRINCIPAL['TOTAL']['transf']
 t_retida = TABELA_PRINCIPAL['TOTAL']['retidas']
@@ -191,9 +191,8 @@ p_transf = round((t_transf / total_atendimentos) * 100) if total_atendimentos > 
 p_retida = round((t_retida / total_atendimentos) * 100) if total_atendimentos > 0 else 0
 p_erro = round((t_erro / total_atendimentos) * 100) if total_atendimentos > 0 else 0
 
-lista_cor = ['#D31925', '#F06730', '#F58D32', '#FAAE33', '#FFD52D']
+lista_cor = ['#B01B25', '#D31925', '#F06730', '#F58D32', '#FAAE33', '#FFD52D']
 lista_cor_2 =[ '#9D5EB0','#A66CB7', '#A569B6', '#C8A4D2', '#D2B7DB'] #, '#E6D6EB' ]
-lista_cor_3 =[ '#D31925','#C9C9CA', '#4BA243']
 
 ###############Trata dados do grafico de hora  ###############################
 grafico_hora = [{'hour': d_hour,
@@ -206,55 +205,15 @@ grafico_hora = sorted(grafico_hora, key=lambda d: d['hour'])
 
 data = {
     "dataProvider": grafico_hora,
-    "product": 'Sofie',
-    "box_01": {
-      "question": "1 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
-      "legend": "Detratores",
-      "data": [
-        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[0]},
-        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[1]},
-        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "alert_color": lista_cor[2]},
-        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[3]},
-        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[4]}
-      ],
-      "agents": [
-        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[0]},
-        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[1]},
-        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[2]}
-      ]
-    },
-    "box_02": {
-      "question": "2 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
-      "legend": "Passivos",
-      "data": [
-        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[0]},
-        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[1]},
-        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "alert_color": lista_cor[2]},
-        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[3]},
-        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[4]}
-      ],
-      "agents": [
-        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[0]},
-        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[1]},
-        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[2]}
-      ]
-    },
-    "box_03": {
-      "question": "3 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
-      "legend": "Promotores",
-      "data": [
-        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[0]},
-        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[1]},
-        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "alert_color": lista_cor[2]},
-        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[3]},
-        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[4]}
-      ],
-      "agents": [
-        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[0]},
-        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[1]},
-        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[2]}
-      ]
-    }
+    "boxes": [
+      {"indice": i_sat[0], "hint": "ZERO INDICAÇÕES", "value": hc, "alert_color": lista_cor[0]},
+      {"indice": i_sat[1], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[1]},
+      {"indice": i_sat[2], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[2]},
+      {"indice": i_sat[3], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "alert_color": lista_cor[3]},
+      {"indice": i_sat[4], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[4]},
+      {"indice": i_sat[5], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[5]}
+    ],
+    
 }
 
 HTML= """
@@ -266,12 +225,12 @@ HTML= """
   }
   .divLarge{
     display: inline-block;
-    width: 100%%;
+    width: calc(100%% - 155px);
     vertical-align: top;
   }
   .divSmall{
     display: -webkit-inline-box;
-    width: calc(100%% - 1px);
+    width: 150px;
     vertical-align: top;
   }
   .linkTopo{
@@ -289,23 +248,17 @@ HTML= """
     background: #d8d8d8;
     padding: 12px;
   }
-  .box_top, .box_content, .box_leg, .box_bottom {
-    display: -webkit-inline-box;
-    width: 100%%;
-  }
   .box_title{
     font-size: 1.6em;
-    margin: 4px;
-    padding: 10px 8px;
+    text-align: center;
     background-color: #edeeef;
     border: 1px solid #ccc;
     border-radius: 4px;
     display: block;
-    width: 96%%;
   }
   .indice_sup{
     color: #333333;
-    display: inline-block;
+    display: block;
     font-size: 1.3em;
     line-height: .7em;
     padding-top: 10px;
@@ -331,15 +284,14 @@ HTML= """
     padding: 10px;
   }
   .graph_divider_2{
-    border: 1px solid;
     display: inline-block;
-    width: calc(50%% - 4px);
+    width: calc(50%% - 35px);
   }
   .total_height{
     height: 100%%;
   }
   .height_max{
-    height: 50%%;
+    height: 100px;
   }
   .height_divider{
     height: 100%%;
@@ -351,26 +303,29 @@ HTML= """
   #box02, #box04{
     width: 100%%;
   }
-  .cs_mb_20 {
-    margin-bottom: 20px;
+  
+  .cs_title {
+    display: block;
+    background-color: #edeeef;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 45px;
+  }
+  .cs_title > h3 {
+    margin: 10px 20px;
+  }
+  .cs_mb_30 {
+    margin-bottom: 30px;
   }
   .cs_md_2 {
-    width: 19%%;
-    margin: 5px 0px 5px 2px;
-    position: relative;
-    min-height: 1px;
-    padding: 2px;
-  }
-  .cs_md_6 {
-    width: 46%%;
+    width: 20%%;
     float: left;
     position: relative;
     min-height: 1px;
     padding: 2px;
   }
-  .cs_md_12 {
-    width: 96%%;
-    margin: 0px;
+  .cs_md_6 {
+    width: 50%%;
     float: left;
     position: relative;
     min-height: 1px;
@@ -382,44 +337,39 @@ HTML= """
   .cs_md_offset_3 {
     margin: 0 12.5%%;
   }
-  .cs_indice {
-    display: block;
-    margin-bottom: 5px;
-    text-align: center;
-    font-size: 1.4em;
+  .cs_heading {
     font-weight: bold;
-  }
-  .cs_box { 
-    height: 40px;
-    border-radius: 4px;
-    padding: 5px;    
-  }
-  .cs_content_box {
-    color: #fff;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
   }
   .cs_card {
     margin-right: 10px;
     padding: 20px 10px;
-    border: 0px solid #CCC;
+    border: 0px solid #ccc;
     border-radius: 4px;
     max-width: 23%%;
   }
-  .cs_leg {
-    font-size: 1.2em;
-    font-weight: bold;
+  #statistics i {
+    font-size: 40px;
+    display: block;
     text-align: center;
-    width: 100%%;
-    min-height: 1px;
+  }
+  span > .cs_color_green {
+    color: #4ba243;
+  }
+  span > .cs_color_gray {
+    color: #c9c9ca;
+  }
+  span > .cs_color_red {
+    color: #d31925;
+  }
+  .sub_title {
+    margin-top: 5px;
+    font-weight: bold;
   }
   .cs_destak {
     font-size: 60px;
     margin-top: -10px;
     margin-bottom: 0px;
-    color: #4BA243;
+    color: #4ba243;
     font-weight: bold;
   }
 </style>
@@ -428,22 +378,23 @@ HTML= """
 
 <div class="div_panel">
   <div class="total_height">
+    <!-- <div class="divSmall height_max box_top"></div> -->
     <div class="divLarge height_max">
       <div class="height_divider">
-        <div class="graph_divider_2 total_height">
-          <div class="divSmall height_max box_01"></div>
+        <div class="box_grafico graph_divider_2 total_height">
+          <div class="divSmall height_max box_top" id="box01"></div>
         </div>
-        <div class="graph_divider_2 total_height">
-          <div class="divSmall height_max box_02"></div>
+        <div class="box_grafico graph_divider_2 total_height">
+          <div class="divSmall height_max box_top" id="box03"></div>
         </div>
       </div>
       <div class="height_divider">
         <div class="total_height" style="vertical-align: top;">
-          <div class="graph_divider_2 total_height">
-            <div class="divSmall height_max box_03"></div>
+          <div class="box_grafico graph_divider_2 total_height">
+            <div class="divSmall height_max box_top" id="box02"></div>
           </div>
-          <div class="graph_divider_2 total_height">
-            <div class="divSmall height_max box_04"></div>
+          <div class="box_grafico graph_divider_2 total_height">
+            <div class="divSmall height_max box_top" id="box04"></div>
           </div>
         </div>
       </div>
@@ -457,69 +408,43 @@ HTML= """
   $('body').on('click', '.linkTopo', function(){
     window.open($(this).attr('data-link'));
   });
-  
-  function renderBoxes(objData, elRender){
-
-    var html = '';
-    html += '<div class="box_top"><div class="box_title cs_mb_20">'+objData.question+'</div></div>';
-    html += '<div class="box_content">';
-    for (var i=0; i < objData.data.length; i++){
-      var obj = objData.data[i];
-      var estilo = '';
-      html += '<div class="cs_md_2">';
-      if(obj.alert_color){
-        estilo = 'background: '+obj.alert_color+' !important;border: 1px solid '+obj.alert_color;
-      }
-      if(obj.link){
-        html += '<div class="box_sup linkContent" style="'+estilo+'" data-link='+obj.link+' data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
-      }
-      if(obj.indice){
-        html += '<div class="cs_indice">'+obj.indice+'</div>';
-      }
-      else{
-        html += '<div class="box_sup cs_mb_20" data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
-      }
-      html += '<div class="cs_box cs_content_box" style="'+estilo+'">'+obj.value+ (obj.symbol ? obj.symbol : '');
-      if(obj.percent_value){
-        html += '<div class="cs_content_box">(' + obj.percent_value + ')</div></div>';
-      }
-      html += '</div>';
-    }
-    html += '</div>';
-    html += '<div class="box_leg"><div class="cs_leg">'+objData.legend+'</div></div>';
-
-    html += '<div class="box_bottom">';
-      html += '<div class="cs_md_2 cs_card">';
-          html += '<span><i class="glyphicon glyphicon-user cs-color-red"></i></span>';
-          html += '<div class="text-center cs_leg">'+objData.agents[0].tipo+'</div>';
-          html += '<h4 class="text-center text"><strong>'+objData.agents[0].value+'</strong>('+objData.agents[0].percent_value+')</h4>';
-      html += '</div>';
-      html += '<div class="cs_md_2 cs_card">';
-          html += '<span><i class="glyphicon glyphicon-user cs-color-gray"></i></span>';
-          html += '<div class="text-center cs_leg">'+objData.agents[1].tipo+'</div>';
-          html += '<h4 class="text-center text"><strong>'+objData.agents[1].value+'</strong>('+objData.agents[1].percent_value+')</h4>';
-      html += '</div>';
-      html += '<div class="cs_md_2 cs_card">';
-          html += '<span><i class="glyphicon glyphicon-user cs-color-green"></i></span>';                    
-          html += '<div class="text-center cs_leg">'+objData.agents[2].tipo+'</div>';
-          html += '<h4 class="text-center text"><strong>'+objData.agents[2].value+'</strong>('+objData.agents[2].percent_value+')</h4>';
-      html += '</div>';
-      html += ' <div class="cs_md_6 cs_card">';
-          html += '<h2 class="text-center cs-destak">+40%%</h2>';
-          html += '<div class="text-center cs_leg" style="margin-top: 0px;">Net Promoter Score (NPS).</div>';
-      html += '</div>';
-    html += '</div>';
-
-    $('.'+elRender).append(html);
-  }
 
   (function onInit(){
     setTimeout(function(){
-      var data = %s;
-      console.log(data);
-      renderBoxes(data.box_01, 'box_01');
-      renderBoxes(data.box_02, 'box_02');
-      renderBoxes(data.box_03, 'box_03');
+    var data = %s;
+    console.log(data)
+      
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    
+     var htmlTopo = '';
+     var product = 'Sofie';
+      htmlTopo += '<div class="cs_title"><h3>Qual a probabilidade de você recomendar o <i>'+product+'</i> a um amigo?</h3></di>';
+      for (var i=0; i < data.boxes.length; i++){
+        var obj = data.boxes[i];
+        var estilo = '';
+        if(obj.alert_color){
+          estilo = 'background: '+obj.alert_color+' !important';
+        }
+        if(obj.link){
+          htmlTopo += '<div class="box_sup linkTopo" style="'+estilo+'" data-link='+obj.link+' data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
+        }
+        if(obj.indice){
+          htmlTopo += '<div class="indice_sup">'+obj.indice+'</div>';
+        }
+        else{
+          htmlTopo += '<div class="box_sup" data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
+        }
+        htmlTopo += '<div class="number_sup" style="'+estilo+'">'+obj.value+ (obj.symbol ? obj.symbol : '');
+        if(obj.percent_value){
+          htmlTopo += '<div class="number_sup">(' + obj.percent_value + ')</div></div>';
+        }
+        else {
+          htmlTopo += '</div>';
+        }
+        htmlTopo += '</div>';
+      }
+
+      $('.box_top').append(htmlTopo);
     }, 500);
   })();
 </script>
