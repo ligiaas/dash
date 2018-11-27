@@ -255,7 +255,7 @@ HTML= """
     font-size: 1.6em;
     margin: 4px;
     text-align: center;
-    padding: 10px;
+    padding: 10px 8px;
     background-color: #edeeef;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -314,8 +314,8 @@ HTML= """
     margin-bottom: 20px;
   }
   .cs_md_2 {
-    width: 15.6%%;
-    margin: 5px 2px;
+    width: 19%%;
+    margin: 5px 0px 5px 2px;
     float: left;
     position: relative;
     min-height: 1px;
@@ -486,3 +486,6 @@ HTML= """
 csprogress.set_style_incalculable()
 csprogress.set_incalculable_result({'html': HTML})
 csprogress.set_success('Fim!')
+
+
+
