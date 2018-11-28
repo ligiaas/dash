@@ -190,9 +190,11 @@ t_script_point = 'SP'
 p_transf = round((t_transf / total_atendimentos) * 100) if total_atendimentos > 0 else 0
 p_retida = round((t_retida / total_atendimentos) * 100) if total_atendimentos > 0 else 0
 p_erro = round((t_erro / total_atendimentos) * 100) if total_atendimentos > 0 else 0
-
-lista_cor = ['#D31925', '#F06730', '#F58D32', '#FAAE33', '#FFD52D']
 lista_cor_2 =[ '#9D5EB0','#A66CB7', '#A569B6', '#C8A4D2', '#D2B7DB'] #, '#E6D6EB' ]
+
+lista_cor_det = ['#D31925', '#F06730', '#F58D32', '#FAAE33', '#FFD52D']
+lista_cor_pas = ['#D9D9D9', '#C9C9CA', '#A5A5A7', '#7D8289', '#494C50']
+lista_cor_pro = ['#BBE1B7', '#98D293', '#65BB5D', '#43903C', '#2A5A26']
 lista_cor_3 =[ '#D31925','#C9C9CA', '#4BA243']
 
 ###############Trata dados do grafico de hora  ###############################
@@ -211,48 +213,48 @@ data = {
       "question": "1 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
       "legend": "Detratores",
       "data": [
-        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[0]},
-        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[1]},
-        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "alert_color": lista_cor[2]},
-        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[3]},
-        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[4]}
+        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_det[0]},
+        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_det[1]},
+        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "box_color": lista_cor_det[2]},
+        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_det[3]},
+        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_det[4]}
       ],
       "agents": [
-        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[0]},
-        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[1]},
-        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[2]}
+        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[0]},
+        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[1]},
+        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]}
       ]
     },
     "box_02": {
       "question": "2 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
       "legend": "Passivos",
       "data": [
-        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[0]},
-        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[1]},
-        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "alert_color": lista_cor[2]},
-        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[3]},
-        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[4]}
+        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pas[0]},
+        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pas[1]},
+        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "box_color": lista_cor_pas[2]},
+        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pas[3]},
+        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pas[4]}
       ],
       "agents": [
-        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[0]},
-        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[1]},
-        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[2]}
+        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[0]},
+        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[1]},
+        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]}
       ]
     },
     "box_03": {
       "question": "3 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
       "legend": "Promotores",
       "data": [
-        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[0]},
-        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[1]},
-        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "alert_color": lista_cor[2]},
-        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[3]},
-        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor[4]}
+        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pro[0]},
+        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pro[1]},
+        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "box_color": lista_cor_pro[2]},
+        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pro[3]},
+        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pro[4]}
       ],
       "agents": [
-        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[0]},
-        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[1]},
-        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "alert_color": lista_cor_3[2]}
+        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[0]},
+        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[1]},
+        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]}
       ]
     }
 }
@@ -293,45 +295,7 @@ HTML= """
     display: -webkit-inline-box;
     width: 100%%;
   }
-  .box_title{
-    font-size: 1.6em;
-    margin: 4px;
-    padding: 10px 8px;
-    background-color: #edeeef;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    display: block;
-    width: 96%%;
-  }
-  .indice_sup{
-    color: #333333;
-    display: inline-block;
-    font-size: 1.3em;
-    line-height: .7em;
-    padding-top: 10px;
-  }
-  .number_sup{
-    display: inline-block;
-    color: #F3EBF5;
-    font-size: 1.2em;
-    line-height: .7em;
-    padding-top: 10px;
-    vertical-align: top;
-  }
-  .text_sup{
-    color: #333333;
-    font-size: 12px;
-    text-align: left;
-    text-transform: uppercase;
-  }
-  .box_grafico{
-    vertical-align: top;
-    margin: 5px 0;
-    background: transparent;
-    padding: 10px;
-  }
   .graph_divider_2{
-    border: 1px solid;
     display: inline-block;
     width: calc(50%% - 4px);
   }
@@ -345,14 +309,8 @@ HTML= """
     height: 100%%;
     margin-bottom: 6px;
   }
-  #box01, #box03{
-    width: 100%%;
-  }
-  #box02, #box04{
-    width: 100%%;
-  }
-  .cs_mb_20 {
-    margin-bottom: 20px;
+  .cs_mb_15 {
+    margin-bottom: 15px;
   }
   .cs_md_2 {
     width: 19%%;
@@ -362,7 +320,7 @@ HTML= """
     padding: 2px;
   }
   .cs_md_6 {
-    width: 46%%;
+    width: 30%%;
     float: left;
     position: relative;
     min-height: 1px;
@@ -376,37 +334,39 @@ HTML= """
     min-height: 1px;
     padding: 2px;
   }
-  .cs_md_offset_2 {
-    margin: 0 4.165%% 0 12.495%%;;
+  .cs_box { 
+    height: 35px;
+    border-radius: 4px;
+    padding: 2px;    
   }
-  .cs_md_offset_3 {
-    margin: 0 12.5%%;
+  .cs_card {
+    margin: 5px;
+    border-radius: 4px;
+    height: 100%%;
+  }
+  .box_title{
+    font-size: 1.4em;
+    margin:  4px 4px 10px 4px;
+    padding: 10px 8px;
+    background-color: #edeeef;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    display: block;
+    width: 96%%;
   }
   .cs_indice {
     display: block;
     margin-bottom: 5px;
     text-align: center;
-    font-size: 1.4em;
+    font-size: 1.3em;
     font-weight: bold;
-  }
-  .cs_box { 
-    height: 40px;
-    border-radius: 4px;
-    padding: 5px;    
   }
   .cs_content_box {
     color: #fff;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-  }
-  .cs_card {
-    margin-right: 10px;
-    padding: 20px 10px;
-    border: 0px solid #CCC;
-    border-radius: 4px;
-    max-width: 23%%;
   }
   .cs_leg {
     font-size: 1.2em;
@@ -416,11 +376,24 @@ HTML= """
     min-height: 1px;
   }
   .cs_destak {
-    font-size: 60px;
-    margin-top: -10px;
-    margin-bottom: 0px;
+    font-size: 4em;
+    margin: 14px 0px 12px 0px;
     color: #4BA243;
     font-weight: bold;
+  }
+  .cs_text_center {
+    text-align: center;
+  }
+  h4 {
+    margin-top: 0px;
+    margin-bottom: 0;
+  }
+  .cs_glyphicons {
+    display: block;
+    font-size: 4em;
+  }
+  .glyphicons:before {
+    padding: 0;
   }
 </style>
 
@@ -461,14 +434,14 @@ HTML= """
   function renderBoxes(objData, elRender){
 
     var html = '';
-    html += '<div class="box_top"><div class="box_title cs_mb_20">'+objData.question+'</div></div>';
+    html += '<div class="box_top"><div class="box_title cs_mb_15">'+objData.question+'</div></div>';
     html += '<div class="box_content">';
     for (var i=0; i < objData.data.length; i++){
       var obj = objData.data[i];
       var estilo = '';
       html += '<div class="cs_md_2">';
-      if(obj.alert_color){
-        estilo = 'background: '+obj.alert_color+' !important;border: 1px solid '+obj.alert_color;
+      if(obj.box_color){
+        estilo = 'background: '+obj.box_color+' !important;border: 1px solid '+obj.box_color;
       }
       if(obj.link){
         html += '<div class="box_sup linkContent" style="'+estilo+'" data-link='+obj.link+' data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
@@ -477,7 +450,7 @@ HTML= """
         html += '<div class="cs_indice">'+obj.indice+'</div>';
       }
       else{
-        html += '<div class="box_sup cs_mb_20" data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
+        html += '<div class="box_sup cs_mb_15" data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
       }
       html += '<div class="cs_box cs_content_box" style="'+estilo+'">'+obj.value+ (obj.symbol ? obj.symbol : '');
       if(obj.percent_value){
@@ -486,27 +459,27 @@ HTML= """
       html += '</div>';
     }
     html += '</div>';
-    html += '<div class="box_leg"><div class="cs_leg">'+objData.legend+'</div></div>';
+    html += '<div class="box_leg"><div class="cs_leg cs_mb_15">'+objData.legend+'</div></div>';
 
     html += '<div class="box_bottom">';
       html += '<div class="cs_md_2 cs_card">';
-          html += '<span><i class="glyphicon glyphicon-user cs-color-red"></i></span>';
-          html += '<div class="text-center cs_leg">'+objData.agents[0].tipo+'</div>';
-          html += '<h4 class="text-center text"><strong>'+objData.agents[0].value+'</strong>('+objData.agents[0].percent_value+')</h4>';
+          html += '<span class="cs_text_center cs_glyphicons glyphicons '+objData.agents[0].icon+'" style="color: '+objData.agents[0].icon_color+'"></span>';
+          html += '<div class="cs_text_center cs_leg">'+objData.agents[0].tipo+'</div>';
+          html += '<h4 class="cs_text_center text"><strong>'+objData.agents[0].value+'</strong>('+objData.agents[0].percent_value+')</h4>';
       html += '</div>';
       html += '<div class="cs_md_2 cs_card">';
-          html += '<span><i class="glyphicon glyphicon-user cs-color-gray"></i></span>';
-          html += '<div class="text-center cs_leg">'+objData.agents[1].tipo+'</div>';
-          html += '<h4 class="text-center text"><strong>'+objData.agents[1].value+'</strong>('+objData.agents[1].percent_value+')</h4>';
+          html += '<span class="cs_text_center cs_glyphicons glyphicons '+objData.agents[1].icon+'" style="color: '+objData.agents[1].icon_color+'"></span>';
+          html += '<div class="cs_text_center cs_leg">'+objData.agents[1].tipo+'</div>';
+          html += '<h4 class="cs_text_center text"><strong>'+objData.agents[1].value+'</strong>('+objData.agents[1].percent_value+')</h4>';
       html += '</div>';
       html += '<div class="cs_md_2 cs_card">';
-          html += '<span><i class="glyphicon glyphicon-user cs-color-green"></i></span>';                    
-          html += '<div class="text-center cs_leg">'+objData.agents[2].tipo+'</div>';
-          html += '<h4 class="text-center text"><strong>'+objData.agents[2].value+'</strong>('+objData.agents[2].percent_value+')</h4>';
+          html += '<span class="cs_text_center cs_glyphicons glyphicons '+objData.agents[2].icon+'" style="color: '+objData.agents[2].icon_color+'"></span>';                    
+          html += '<div class="cs_text_center cs_leg">'+objData.agents[2].tipo+'</div>';
+          html += '<h4 class="cs_text_center text"><strong>'+objData.agents[2].value+'</strong>('+objData.agents[2].percent_value+')</h4>';
       html += '</div>';
       html += ' <div class="cs_md_6 cs_card">';
-          html += '<h2 class="text-center cs-destak">+40%%</h2>';
-          html += '<div class="text-center cs_leg" style="margin-top: 0px;">Net Promoter Score (NPS).</div>';
+          html += '<h2 class="cs_text_center cs_destak">+40%%</h2>';
+          html += '<div class="cs_text_center cs_leg" style="margin-top: 0px;">Net Promoter Score (NPS).</div>';
       html += '</div>';
     html += '</div>';
 
