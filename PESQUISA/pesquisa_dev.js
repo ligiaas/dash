@@ -211,7 +211,7 @@ data = {
     "product": 'Sofie',
     "box_01": {
       "question": "1 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
-      "legend": "Detratores",
+      "legend": cs_agents[0],
       "data": [
         {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_det[0]},
         {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_det[1]},
@@ -227,7 +227,7 @@ data = {
     },
     "box_02": {
       "question": "2 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
-      "legend": "Passivos",
+      "legend": cs_agents[1],
       "data": [
         {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pas[0]},
         {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pas[1]},
@@ -243,7 +243,7 @@ data = {
     },
     "box_03": {
       "question": "3 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
-      "legend": "Promotores",
+      "legend": cs_agents[2],
       "data": [
         {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pro[0]},
         {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pro[1]},
@@ -377,7 +377,7 @@ HTML= """
   }
   .cs_destak {
     font-size: 4em;
-    margin: 14px 0px 12px 0px;
+    margin: 10px 0px 12px 0px;
     color: #4BA243;
     font-weight: bold;
   }
@@ -463,17 +463,17 @@ HTML= """
 
     html += '<div class="box_bottom">';
       html += '<div class="cs_md_2 cs_card">';
-          html += '<span class="cs_text_center cs_glyphicons glyphicons '+objData.agents[0].icon+'" style="color: '+objData.agents[0].icon_color+'"></span>';
+          html += '<div class="cs_text_center"><img src="/resources/images/cs_sad.png" width="52" height="52" style="background-color: '+objData.agents[0].icon_color+'; border-radius: 26px; width: 52px;height: 52px;"></div>';
           html += '<div class="cs_text_center cs_leg">'+objData.agents[0].tipo+'</div>';
           html += '<h4 class="cs_text_center text"><strong>'+objData.agents[0].value+'</strong>('+objData.agents[0].percent_value+')</h4>';
       html += '</div>';
       html += '<div class="cs_md_2 cs_card">';
-          html += '<span class="cs_text_center cs_glyphicons glyphicons '+objData.agents[1].icon+'" style="color: '+objData.agents[1].icon_color+'"></span>';
+          html += '<div class="cs_text_center"><img src="/resources/images/cs_smile_emotion.png" width="52" height="52" style="background-color: '+objData.agents[1].icon_color+'; border-radius: 26px; width: 52px;height: 52px;"></div>';
           html += '<div class="cs_text_center cs_leg">'+objData.agents[1].tipo+'</div>';
           html += '<h4 class="cs_text_center text"><strong>'+objData.agents[1].value+'</strong>('+objData.agents[1].percent_value+')</h4>';
       html += '</div>';
       html += '<div class="cs_md_2 cs_card">';
-          html += '<span class="cs_text_center cs_glyphicons glyphicons '+objData.agents[2].icon+'" style="color: '+objData.agents[2].icon_color+'"></span>';                    
+          html += '<div class="cs_text_center"><img src="/resources/images/cs_smile.png" width="52" height="52" style="background-color: '+objData.agents[2].icon_color+'; border-radius: 26px; width: 52px;height: 52px;"></div>';                    
           html += '<div class="cs_text_center cs_leg">'+objData.agents[2].tipo+'</div>';
           html += '<h4 class="cs_text_center text"><strong>'+objData.agents[2].value+'</strong>('+objData.agents[2].percent_value+')</h4>';
       html += '</div>';
