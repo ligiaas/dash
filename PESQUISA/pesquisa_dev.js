@@ -6,6 +6,7 @@ from cs.utils.cassandra_utils import datetime_to_cql
 from pandas import Series
 import requests
 from json import loads
+from cs.conf import settings, resolve_pymongo_connection
 
 guid =  uuid1()
 empresa = 'gama'
@@ -82,7 +83,7 @@ lista_duracao = []
 dados = busca_dados(data_inicial, data_final, canal)
 indica_retencao = []
 limite = 6
-
+coll_fossil_tab = resolve_pymongo_connection(settings.FOSSIL, replicaset_name='analyticsfdb', default_port='64302')[empresa]['fossil_ContactTabCapsula']
 for dado in dados.result():
     info = dado.VALUE
     is_transfer = int(info["is_transfer"]) if info["is_transfer"] != '' else 0
@@ -95,8 +96,12 @@ for dado in dados.result():
     data_atendimento = dado.DATA_OCORRENCIA
     dia = data_atendimento.strftime('%Y-%m-%d')
     hora = data_atendimento.strftime('%H')
-
     classe = None
+    media_id = info['media_id']
+    dados_tab =  coll_fossil_tab.find_one({'media_id': media_id})
+    if dados_tab:
+        #governance.carimbo.USUARIO
+        usuario_ = dados_tab['governance']['carimbo']['USUARIO'] 
     
     """
     if is_transfer == 1:
@@ -178,7 +183,7 @@ if len(lista_duracao) > 0:
     remove_outliner = removeOutliners(media_serie)
     media = secondsToHours(remove_outliner.mean())
 
-i_sat = ['1', '2', '3', '4', '5']
+i_sat = ['Ruim', 'Regular', 'Bom', 'Ótimo', 'Excelente']
 cs_agents = ['Detratores', 'Passivos', 'Promotores']
 total_atendimentos = TABELA_PRINCIPAL['TOTAL']['total']
 t_transf = TABELA_PRINCIPAL['TOTAL']['transf']
@@ -195,7 +200,8 @@ lista_cor_2 =[ '#9D5EB0','#A66CB7', '#A569B6', '#C8A4D2', '#D2B7DB'] #, '#E6D6EB
 lista_cor_det = ['#D31925', '#F06730', '#F58D32', '#FAAE33', '#FFD52D']
 lista_cor_pas = ['#D9D9D9', '#C9C9CA', '#A5A5A7', '#7D8289', '#494C50']
 lista_cor_pro = ['#BBE1B7', '#98D293', '#65BB5D', '#43903C', '#2A5A26']
-lista_cor_3 =[ '#D31925','#C9C9CA', '#4BA243']
+lista_cor_geral = ['#D31925', '#F06730', '#A5A5A7', '#43903C','#2A5A26']
+lista_cor_3 =[ '#FFFFFF','#C9C9CA', '#4BA243'] # '#D31925'
 
 ###############Trata dados do grafico de hora  ###############################
 grafico_hora = [{'hour': d_hour,
@@ -211,50 +217,53 @@ data = {
     "product": 'Sofie',
     "box_01": {
       "question": "1 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
-      "legend": cs_agents[0],
+      "legend": [cs_agents[0], cs_agents[1], cs_agents[2]],
       "data": [
-        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_det[0]},
-        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_det[1]},
-        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "box_color": lista_cor_det[2]},
-        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_det[3]},
-        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_det[4]}
+        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[0]},
+        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[1]},
+        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "box_color": lista_cor_geral[2]},
+        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[3]},
+        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[4]}
       ],
       "agents": [
         {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[0]},
         {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[1]},
-        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]}
-      ]
+        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]},
+        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": "35%", "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]}      ]
     },
     "box_02": {
       "question": "2 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
-      "legend": cs_agents[1],
+      "legend": [cs_agents[0], cs_agents[1], cs_agents[2]],
       "data": [
-        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pas[0]},
-        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pas[1]},
-        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "box_color": lista_cor_pas[2]},
-        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pas[3]},
-        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pas[4]}
+        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": 1, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[0]},
+        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": 3, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[1]},
+        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": 2, "percent_value": str(p_erro) + "%" , "box_color": lista_cor_geral[2]},
+        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": 5, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[3]},
+        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": 5, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[4]}
       ],
       "agents": [
-        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[0]},
-        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[1]},
-        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]}
+        {"tipo": cs_agents[0], "hint": cs_agents[0], "value": 4, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[0]},
+        {"tipo": cs_agents[1], "hint": cs_agents[1], "value": 2, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[1]},
+        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": 10, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]},
+        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": "+ 2 ", "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]}
+        
       ]
     },
     "box_03": {
       "question": "3 - Qual a probabilidade de você recomendar o Sofie a um amigo?",
-      "legend": cs_agents[2],
+      "legend": [cs_agents[0], cs_agents[1], cs_agents[2]],
       "data": [
-        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pro[0]},
-        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pro[1]},
-        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "box_color": lista_cor_pro[2]},
-        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pro[3]},
-        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_pro[4]}
+        {"indice": i_sat[0], "hint": "UMA INDICAÇÃO", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[0]},
+        {"indice": i_sat[1], "hint": "DUAS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[1]},
+        {"indice": i_sat[2], "hint": "TRÊS INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%" , "box_color": lista_cor_geral[2]},
+        {"indice": i_sat[3], "hint": "QUATRO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[3]},
+        {"indice": i_sat[4], "hint": "CINCO INDICAÇÕES", "value": t_erro, "percent_value": str(p_erro) + "%", "box_color": lista_cor_geral[4]}
       ],
       "agents": [
         {"tipo": cs_agents[0], "hint": cs_agents[0], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[0]},
         {"tipo": cs_agents[1], "hint": cs_agents[1], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[1]},
-        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]}
+        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": t_erro, "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]},
+        {"tipo": cs_agents[2], "hint": cs_agents[2], "value": "+ 3 ", "percent_value": str(p_erro) + "%", "icon": "glyphicons-user", "icon_color": lista_cor_3[2]}  
       ]
     }
 }
@@ -292,6 +301,10 @@ HTML= """
     padding: 12px;
   }
   .box_top, .box_content, .box_leg, .box_bottom {
+    display: -webkit-inline-box;
+    width: 100%%;
+  }
+  .bx_leg {
     display: -webkit-inline-box;
     width: 100%%;
   }
@@ -341,8 +354,9 @@ HTML= """
   }
   .cs_card {
     margin: 5px;
+    height: 90px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    height: 100%%;
   }
   .box_title{
     font-size: 1.4em;
@@ -368,12 +382,20 @@ HTML= """
     text-align: center;
     text-transform: uppercase;
   }
-  .cs_leg {
+  .cs_text {
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
     width: 100%%;
     min-height: 1px;
+  }
+  .cs_leg {
+    font-size: 1.2em;
+    font-weight: bold;
+    display: inline;
+    width: 100%%;
+    min-height: 1px;
+    padding-left: 25%%;
   }
   .cs_destak {
     font-size: 4em;
@@ -447,7 +469,7 @@ HTML= """
         html += '<div class="box_sup linkContent" style="'+estilo+'" data-link='+obj.link+' data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
       }
       if(obj.indice){
-        html += '<div class="cs_indice">'+obj.indice+'</div>';
+        html += '<div class="cs_indice" data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">'+obj.indice+'</div>';
       }
       else{
         html += '<div class="box_sup cs_mb_15" data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
@@ -459,27 +481,27 @@ HTML= """
       html += '</div>';
     }
     html += '</div>';
-    html += '<div class="box_leg"><div class="cs_leg cs_mb_15">'+objData.legend+'</div></div>';
+    html += '<div class="box_leg"><div class="cs_leg">'+objData.legend[0]+'</div><div class="cs_leg">'+objData.legend[1]+'</div><div class="cs_leg">'+objData.legend[2]+'</div></div>'; 
 
     html += '<div class="box_bottom">';
       html += '<div class="cs_md_2 cs_card">';
           html += '<div class="cs_text_center"><img src="/resources/images/cs_sad.png" width="52" height="52" style="background-color: '+objData.agents[0].icon_color+'; border-radius: 26px; width: 52px;height: 52px;"></div>';
-          html += '<div class="cs_text_center cs_leg">'+objData.agents[0].tipo+'</div>';
+          html += '<div class="cs_text_center cs_text">'+objData.agents[0].tipo+'</div>';
           html += '<h4 class="cs_text_center text"><strong>'+objData.agents[0].value+'</strong>('+objData.agents[0].percent_value+')</h4>';
       html += '</div>';
       html += '<div class="cs_md_2 cs_card">';
-          html += '<div class="cs_text_center"><img src="/resources/images/cs_smile_emotion.png" width="52" height="52" style="background-color: '+objData.agents[1].icon_color+'; border-radius: 26px; width: 52px;height: 52px;"></div>';
-          html += '<div class="cs_text_center cs_leg">'+objData.agents[1].tipo+'</div>';
+          html += '<div class="cs_text_center"><img src="/resources/images/cs_meh.png" width="52" height="52" style="background-color: '+objData.agents[1].icon_color+'; border-radius: 26px; width: 52px;height: 52px;"></div>';
+          html += '<div class="cs_text_center cs_text">'+objData.agents[1].tipo+'</div>';
           html += '<h4 class="cs_text_center text"><strong>'+objData.agents[1].value+'</strong>('+objData.agents[1].percent_value+')</h4>';
       html += '</div>';
       html += '<div class="cs_md_2 cs_card">';
           html += '<div class="cs_text_center"><img src="/resources/images/cs_smile.png" width="52" height="52" style="background-color: '+objData.agents[2].icon_color+'; border-radius: 26px; width: 52px;height: 52px;"></div>';                    
-          html += '<div class="cs_text_center cs_leg">'+objData.agents[2].tipo+'</div>';
+          html += '<div class="cs_text_center cs_text">'+objData.agents[2].tipo+'</div>';
           html += '<h4 class="cs_text_center text"><strong>'+objData.agents[2].value+'</strong>('+objData.agents[2].percent_value+')</h4>';
       html += '</div>';
       html += ' <div class="cs_md_6 cs_card">';
-          html += '<h2 class="cs_text_center cs_destak">+40%%</h2>';
-          html += '<div class="cs_text_center cs_leg" style="margin-top: 0px;">Net Promoter Score (NPS).</div>';
+          html += '<h2 class="cs_text_center cs_destak">'+ objData.agents[3].value +'</h2>';
+          html += '<div class="cs_text_center cs_text" style="margin-top: 0px;">Net Promoter Score (NPS).</div>';
       html += '</div>';
     html += '</div>';
 
