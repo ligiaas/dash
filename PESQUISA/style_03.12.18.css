@@ -71,17 +71,17 @@
   }
   .bx_leg {
 	display: -webkit-inline-box;
-	width: 100%%;
+	width: 50%%;
   }
   .graph_divider_2{
 	display: inline-block;
-	width: calc(50%% - 4px);
+	width: calc(100%% - 4px);
   }
   .total_height{
 	height: 100%%;
   }
   .height_max{
-	height: 50%%;
+	height: 30%%; //ajustar o total-height direto na tag
   }
   .height_divider{
 	height: 100%%;
@@ -92,17 +92,17 @@
   }
   .cs_md_2 {
 	width: 19%%;
-	margin: 5px 0px 5px 2px;
+	margin: 5px 1px 15px 1px;
 	position: relative;
 	min-height: 1px;
 	padding: 2px;
   }
   .cs_md_6 {
-	width: 33%%;
+	width: 34%%;
 	float: left;
 	position: relative;
 	min-height: 1px;
-	padding: 2px;
+	padding: 2px 5px;
   }
   .cs_md_12 {
 	width: 96%%;
@@ -113,13 +113,13 @@
 	padding: 2px;
   }
   .cs_box { 
-	height: 35px;
+	height: 44px;
 	border-radius: 4px;
 	padding: 2px;    
   }
   .cs_card {
 	margin: 5px;
-	height: 90px;
+	height: 110px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
   }
@@ -127,34 +127,35 @@
   	margin: 5px 0px 5px 5px;
   }
   .box_title{
-	font-size: 1.4em;
-	margin:  4px 4px 10px 4px;
+	font-size: 2em;
+	margin-bottom: 15px;
 	padding: 10px 8px;
 	background-color: #edeeef;
 	border: 1px solid #CCC;
 	border-radius: 4px;
 	display: block;
-	width: 96%%;
+	width: 98%%;
+	padding: 0px 3px;
   }
   .cs_indice {
 	display: block;
 	margin-bottom: 5px;
 	text-align: center;
-	font-size: 1.3em;
+	font-size: 1.9em;
 	font-weight: bold;
   }
   .cs_content_box {
 	color: #fff;
-	font-size: 1.1em;
+	font-size: 1.5em;
 	font-weight: bold;
 	text-align: center;
 	text-transform: uppercase;
   }
   .cs_text {
-	font-size: 1.2em;
+	font-size: 1.8em; // não esquecer de alterar na tag o tamnho do smile p/52px
 	font-weight: bold;
-	text-align: center;
 	width: 100%%;
+	margin: 1px 5px 5px 5px;
 	min-height: 1px;
   }
   .cs_leg {
@@ -166,8 +167,8 @@
 	padding-left: 25%%;
   }
   .cs_destak {
-	font-size: 4em;
-	margin: 10px 0px 12px 0px;
+	font-size: 5em;
+	margin: 20px 0px;
 	color: #4BA243;
 	font-weight: bold;
   }
@@ -184,5 +185,26 @@
   }
   .glyphicons:before {
 	padding: 0;
+  }
+
+  @media screen and (min-width: 768px;) {
+  	.cs_height {
+  		height: 55%%; //não esquecer de declarar na tag
+  	}
+  	.cs_content_box {
+  		font-size: 1.3em;
+  	}
+  }
+  @media screen and (min-width: 1024px;) {
+  	.graph_divider_2{
+		display: inline-block;
+		width: calc(50%% - 4px);
+	}
+  	.cs_height {
+  		height: 100%%;
+  	}
+  	.cs_content_box {
+  		font-size: 1.3em;
+  	}
   }
 </style>
