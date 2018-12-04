@@ -459,9 +459,6 @@ HTML = """
   display: block;
   width: 96%%;
 	}
-	.box_title:last-child {
-		margin-top: 6px;
-	}
   .cs_indice {
   display: block;
   margin-bottom: 5px;
@@ -518,15 +515,41 @@ HTML = """
       line-height: 1.2;
       padding: 6px 8px;
     }
-  	cs_md_6 {
-      width: 33%%;
+  	.cs_md_6 {
+      width: 31%%;
+      padding: 2px 3px;
     }
+  }
+  @media(min-width:1100px) {
+  	.cs_md_6 {
+  		padding: 2px 4px;
+  	}
+  }
+  @media(min-width:1200px) {
+  	.cs_md_6 {
+  		width: 32%%;
+  		padding: 2px 3px;
+  	}
+  }
+  @media(min-width:1300px) {
+  	.cs_md_6 {
+  		padding: 2px 4px;
+  	}
+  }
+  @media(min-width:1400px) {
+  	.box_title {
+  		font-size: 1.3em;
+  	}
+  	.cs_md_6 {
+  		width: 33%%;
+  		padding: 2px 3px;
+  	}
   }
 </style>
 
 <!-- HTML -->
 
-<div class="div_panel" style="border: 1px solid;">
+<div class="div_panel">
   <div class="total_height">
 	<div class="divLarge height_max">
 	  <div class="height_divider">

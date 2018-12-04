@@ -384,50 +384,47 @@ HTML = """
   }
   .box_sup{
 	margin: 4px;
-	background: #d8d8d8;
+	background: #D8D8D8;
 	padding: 12px;
   }
   .box_top, .box_content, .box_leg, .box_bottom {
 	display: -webkit-inline-box;
 	width: 100%%;
   }
+  .bx_leg {
+	display: -webkit-inline-box;
+	width: 100%%;
+  }
   .graph_divider_2{
 	display: inline-block;
-	width: calc(100%% - 4px);
+	width: calc(50%% - 4px);
   }
   .total_height{
 	height: 100%%;
-	border: 1px solid blue;
   }
   .height_max{
 	height: 50%%;
-	border: 1px solid green;
   }
   .height_divider{
 	height: 100%%;
 	margin-bottom: 6px;
-	border: 1px solid purple;
-  }
-  .cs_height {
-  	height: 50%%;
-  	border: 5px solid #10ff00;;
   }
   .cs_mb_15 {
 	margin-bottom: 15px;
   }
   .cs_md_2 {
 	width: 19%%;
-	margin: 5px 1px 15px 1px;
+	margin: 5px 0px 2px 2px;
 	position: relative;
 	min-height: 1px;
 	padding: 2px;
   }
   .cs_md_6 {
-	width: 34%%;
+	width: 31%%;
 	float: left;
 	position: relative;
 	min-height: 1px;
-	padding: 2px 5px;
+	padding: 2px;
   }
   .cs_md_12 {
 	width: 96%%;
@@ -437,55 +434,63 @@ HTML = """
 	min-height: 1px;
 	padding: 2px;
   }
-  .cs_box { 
-	height: 44px;
-	border-radius: 4px;
-	padding: 2px;    
-  }
-  .cs_card {
-	margin: 5px;
-	height: 110px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-  }
+  .cs_box {
+  height: 34px;
+  border-radius: 4px;
+  padding: 1px;
+	}
+	.cs_card {
+  margin: 2px 5px;
+  height: 82px;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+	}
   .cs_card:last-child {
-  	margin: 5px 0px 5px 5px;
+  margin: 2px 0px 2px 5px;
   }
-  .box_title{
-	font-size: 2em;
-	line-height: 2;
-	margin: 3px 3px 15px 3px;
-	padding: 10px 3px;
-	background-color: #edeeef;
-	border: 1px solid #CCC;
-	border-radius: 4px;
-	display: block;
-	width: 98%%;
-  }
+  .box_title {
+  font-size: 1.2em;
+  line-height: 1.2;
+  padding: 6px 8px;
+  margin: 4px;
+  background-color: #EDEEEF;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  display: block;
+  width: 96%;
+	}
   .cs_indice {
-	display: block;
-	margin-bottom: 5px;
-	text-align: center;
-	font-size: 1.9em;
-	font-weight: bold;
-  }
+  display: block;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: bold;
+	}
   .cs_content_box {
-	color: #fff;
-	font-size: 1.5em;
+	color: #FFF;
+	font-size: 1.1em;
 	font-weight: bold;
 	text-align: center;
 	text-transform: uppercase;
   }
   .cs_text {
-	font-size: 1.8em;
+  font-size: 1em;
+  font-weight: bold;
+  width: 100%%;
+  margin-top: 1px;
+  min-height: 1px;
+	}
+  .cs_leg {
+	font-size: 1.2em;
 	font-weight: bold;
+	display: inline;
 	width: 100%%;
-	margin: 1px 5px 5px 5px;
 	min-height: 1px;
+	padding-left: 25%%;
   }
   .cs_destak {
-	font-size: 5em;
-	margin: 20px 0px;
+	font-size: 4em;
+	margin: 7px 0px 12px 0px;
 	color: #4BA243;
 	font-weight: bold;
   }
@@ -503,7 +508,6 @@ HTML = """
   .glyphicons:before {
 	padding: 0;
   }
-
 </style>
 
 <!-- HTML -->
@@ -512,7 +516,7 @@ HTML = """
   <div class="total_height">
 	<div class="divLarge height_max">
 	  <div class="height_divider">
-		<div class="graph_divider_2 total_height cs_height">
+		<div class="graph_divider_2 total_height">
 		  <div class="divSmall height_max box_01"></div>
 		</div>
 		<div class="graph_divider_2 total_height">
@@ -521,7 +525,7 @@ HTML = """
 	  </div>
 	  <div class="height_divider">
 		<div class="total_height" style="vertical-align: top;">
-		  <div class="graph_divider_2 total_height cs_height">
+		  <div class="graph_divider_2 total_height">
 			<div class="divSmall height_max box_03"></div>
 		  </div>
 		  <div id="chartdiv" class="graph_divider_2 total_height">
@@ -678,17 +682,17 @@ HTML = """
 
 		html += '<div class="box_bottom">';
 		  html += '<div class="cs_md_2 cs_card">';
-			  html += '<div class="cs_text_center"><img src="/resources/images/cs_sad.png" width="52" height="52" style="background-color: '+objData.agents[0].icon_color+'; border-radius: 26px; width: 52px;height: 52px;"></div>';
+			  html += '<div class="cs_text_center"><img src="/resources/images/cs_sad.png" width="45" height="45" style="background-color: '+objData.agents[0].icon_color+'; border-radius: 26px; width: 45px;height: 45px;"></div>';
 			  html += '<div class="cs_text_center cs_text">'+objData.agents[0].tipo+'</div>';
 			  html += '<h4 class="cs_text_center text"><strong>'+objData.agents[0].value+'</strong>('+objData.agents[0].percent_value+')</h4>';
 		  html += '</div>';
 		  html += '<div class="cs_md_2 cs_card">';
-			  html += '<div class="cs_text_center"><img src="/resources/images/cs_meh.png" width="52" height="52" style="background-color: '+objData.agents[1].icon_color+'; border-radius: 26px; width: 52px;height: 52px;"></div>';
+			  html += '<div class="cs_text_center"><img src="/resources/images/cs_meh.png" width="45" height="45" style="background-color: '+objData.agents[1].icon_color+'; border-radius: 26px; width: 45px;height: 45px;"></div>';
 			  html += '<div class="cs_text_center cs_text">'+objData.agents[1].tipo+'</div>';
 			  html += '<h4 class="cs_text_center text"><strong>'+objData.agents[1].value+'</strong>('+objData.agents[1].percent_value+')</h4>';
 		  html += '</div>';
 		  html += '<div class="cs_md_2 cs_card">';
-			  html += '<div class="cs_text_center"><img src="/resources/images/cs_smile.png" width="52" height="52" style="background-color: '+objData.agents[2].icon_color+'; border-radius: 26px; width: 52px;height: 52px;"></div>';                    
+			  html += '<div class="cs_text_center"><img src="/resources/images/cs_smile.png" width="45" height="45" style="background-color: '+objData.agents[2].icon_color+'; border-radius: 26px; width: 45px;height: 45px;"></div>';                    
 			  html += '<div class="cs_text_center cs_text">'+objData.agents[2].tipo+'</div>';
 			  html += '<h4 class="cs_text_center text"><strong>'+objData.agents[2].value+'</strong>('+objData.agents[2].percent_value+')</h4>';
 		  html += '</div>';
