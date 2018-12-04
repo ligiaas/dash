@@ -1,0 +1,188 @@
+.box_title {
+  font-size: 1.3em;
+  margin: 4px 4px 10px 4px;
+  padding: 8px;
+  background-color: #EDEEEF;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  display: block;
+  width: 96%;
+}
+.cs_indice {
+  display: block;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.cs_box {
+  height: 34px;
+  border-radius: 4px;
+  padding: 1px;
+}
+.cs_card {
+  margin: 5px;
+  height: 82px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.cs_text {
+  font-size: 1em;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 1px;
+  min-height: 1px;
+}
+
+<style>
+  html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%%;
+  }
+  .divLarge{
+	display: inline-block;
+	width: 100%%;
+	vertical-align: top;
+  }
+  .divSmall{
+	display: -webkit-inline-box;
+	width: calc(100%% - 1px);
+	vertical-align: top;
+  }
+  .linkTopo{
+	cursor: pointer;
+  }
+  .linkTopo:hover{
+	opacity: 0.6;
+  }
+  .div_panel{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	height: 100%%;
+  }
+  .box_sup{
+	margin: 4px;
+	background: #d8d8d8;
+	padding: 12px;
+  }
+  .box_top, .box_content, .box_leg, .box_bottom {
+	display: -webkit-inline-box;
+	width: 100%%;
+  }
+  .bx_leg {
+	display: -webkit-inline-box;
+	width: 100%%;
+  }
+  .graph_divider_2{
+	display: inline-block;
+	width: calc(50%% - 4px);
+  }
+  .total_height{
+	height: 100%%;
+  }
+  .height_max{
+	height: 50%%;
+  }
+  .height_divider{
+	height: 100%%;
+	margin-bottom: 6px;
+  }
+  .cs_mb_15 {
+	margin-bottom: 15px;
+  }
+  .cs_md_2 {
+	width: 19%%;
+	margin: 5px 0px 5px 2px;
+	position: relative;
+	min-height: 1px;
+	padding: 2px;
+  }
+  .cs_md_6 {
+	width: 33%%;
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding: 2px;
+  }
+  .cs_md_12 {
+	width: 96%%;
+	margin: 0px;
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding: 2px;
+  }
+  .cs_box { 
+	height: 35px;
+	border-radius: 4px;
+	padding: 2px;    
+  }
+  .cs_card {
+	margin: 5px;
+	height: 90px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+  }
+  .cs_card:last-child {
+  	margin: 5px 0px 5px 5px;
+  }
+  .box_title{
+	font-size: 1.4em;
+	margin:  4px 4px 10px 4px;
+	padding: 10px 8px;
+	background-color: #edeeef;
+	border: 1px solid #CCC;
+	border-radius: 4px;
+	display: block;
+	width: 96%%;
+  }
+  .cs_indice {
+	display: block;
+	margin-bottom: 5px;
+	text-align: center;
+	font-size: 1.3em;
+	font-weight: bold;
+  }
+  .cs_content_box {
+	color: #fff;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+  }
+  .cs_text {
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: center;
+	width: 100%%;
+	min-height: 1px;
+  }
+  .cs_leg {
+	font-size: 1.2em;
+	font-weight: bold;
+	display: inline;
+	width: 100%%;
+	min-height: 1px;
+	padding-left: 25%%;
+  }
+  .cs_destak {
+	font-size: 4em;
+	margin: 10px 0px 12px 0px;
+	color: #4BA243;
+	font-weight: bold;
+  }
+  .cs_text_center {
+	text-align: center;
+  }
+  h4 {
+	margin-top: 0px;
+	margin-bottom: 0;
+  }
+  .cs_glyphicons {
+	display: block;
+	font-size: 4em;
+  }
+  .glyphicons:before {
+	padding: 0;
+  }
+</style>
