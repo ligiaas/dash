@@ -457,6 +457,7 @@ HTML = """
   border: 1px solid #CCC;
   border-radius: 4px;
   display: block;
+  height: auto;
   width: 96%%;
 	}
   .cs_indice {
@@ -537,12 +538,33 @@ HTML = """
   	}
   }
   @media(min-width:1400px) {
+  	.height_divider {
+  		margin-bottom: 40px;
+  	}
   	.box_title {
   		font-size: 1.3em;
+  		margin-bottom: 15px;
   	}
   	.cs_md_6 {
   		width: 33%%;
   		padding: 2px 3px;
+  	}
+  	.cs_md_2 {
+  		margin-bottom: 15px;
+  	}
+  }
+  @media(min-width:1500px) {
+  	.box_title {
+  		font-size: 1.3em;
+  	}
+  	.cs_md_6 {
+  		width: 34%%;
+		padding: 2px 1px;
+  	}
+  }
+  @media(min-width:1600px) {
+  	.height_divider {
+  		margin-bottom: 15px;
   	}
   }
 </style>
