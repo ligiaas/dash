@@ -358,93 +358,93 @@ data = {
 HTML = """
 <style>
   html, body{
-	margin: 0;
-	padding: 0;
-	height: 100%%;
+  margin: 0;
+  padding: 0;
+  height: 100%%;
   }
   .divLarge{
-	display: inline-block;
-	width: 100%%;
-	vertical-align: top;
+  display: inline-block;
+  width: 100%%;
+  vertical-align: top;
   }
   .divSmall{
-	display: -webkit-inline-box;
-	width: calc(100%% - 1px);
-	vertical-align: top;
+  display: -webkit-inline-box;
+  width: calc(100%% - 1px);
+  vertical-align: top;
   }
   .linkTopo{
-	cursor: pointer;
+  cursor: pointer;
   }
   .linkTopo:hover{
-	opacity: 0.6;
+  opacity: 0.6;
   }
   .div_panel{
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	height: 100%%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%%;
   }
   .box_sup{
-	margin: 4px;
-	background: #D8D8D8;
-	padding: 12px;
+  margin: 4px;
+  background: #D8D8D8;
+  padding: 12px;
   }
   .box_top, .box_content, .box_leg, .box_bottom {
-	display: -webkit-inline-box;
-	width: 100%%;
+  display: -webkit-inline-box;
+  width: 100%%;
   }
   .bx_leg {
-	display: -webkit-inline-box;
-	width: 100%%;
+  display: -webkit-inline-box;
+  width: 100%%;
   }
   .graph_divider_2{
-	display: inline-block;
-	width: calc(50%% - 4px);
+  display: inline-block;
+  width: calc(50%% - 4px);
   }
   .total_height{
-	height: 100%%;
+  height: 100%%;
   }
   .height_max{
-	height: 50%%;
+  height: 50%%;
   }
   .height_divider{
-	height: 100%%;
-	margin-bottom: 6px;
+  height: 100%%;
+  margin-bottom: 6px;
   }
   .cs_mb_15 {
-	margin-bottom: 15px;
+  margin-bottom: 15px;
   }
   .cs_md_2 {
-	width: 19%%;
-	margin: 5px 0px 2px 2px;
-	position: relative;
-	min-height: 1px;
-	padding: 2px;
+  width: 19%%;
+  margin: 5px 0px 2px 2px;
+  position: relative;
+  min-height: 1px;
+  padding: 2px;
   }
   .cs_md_6 {
-	width: 33%%;
-	float: left;
-	position: relative;
-	min-height: 1px;
-	padding: 2px;
+  width: 33%%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding: 2px;
   }
   .cs_md_12 {
-	width: 96%%;
-	margin: 0px;
-	float: left;
-	position: relative;
-	min-height: 1px;
-	padding: 2px;
+  width: 96%%;
+  margin: 0px;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding: 2px;
   }
   .cs_box {
-  height: 34px;
+  height: 35px;
   border-radius: 4px;
   padding: 1px;
-	}
-	.cs_card {
+  }
+  .cs_card {
   margin: 2px 5px;
   height: 82px;
   border: 1px solid #CCC;
   border-radius: 4px;
-	}
+  }
   .cs_card:last-child {
   margin: 2px 0px 2px 5px;
   }
@@ -459,112 +459,126 @@ HTML = """
   display: block;
   height: auto;
   width: 96%%;
-	}
+  }
   .cs_indice {
   display: block;
   margin-bottom: 5px;
   text-align: center;
   font-size: 1.25em;
   font-weight: bold;
-	}
+  }
   .cs_content_box {
-	color: #FFF;
-	font-size: 1.1em;
-	font-weight: bold;
-	text-align: center;
-	text-transform: uppercase;
+  color: #FFF;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
   }
   .cs_text {
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: bold;
   width: 100%%;
   margin-top: 1px;
   min-height: 1px;
-	}
-  .cs_leg {
-	font-size: 1.2em;
-	font-weight: bold;
-	display: inline;
-	width: 100%%;
-	min-height: 1px;
-	padding-left: 25%%;
+  }
+  .cs_value {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 2px;
   }
   .cs_destak {
-	font-size: 4em;
-	margin: 7px 0px 12px 0px;
-	color: #4BA243;
-	font-weight: bold;
+  font-size: 4em;
+  margin: 7px 0px 12px 0px;
+  color: #4BA243;
+  font-weight: bold;
   }
   .cs_text_center {
-	text-align: center;
+  text-align: center;
   }
   h4 {
-	margin-top: 0px;
-	margin-bottom: 0;
+  margin-top: 0px;
+  margin-bottom: 0;
   }
   .cs_glyphicons {
-	display: block;
-	font-size: 4em;
+  display: block;
+  font-size: 4em;
   }
   .glyphicons:before {
-	padding: 0;
+  padding: 0;
   }
 
   @media(min-width:1024px) {
-    .box_title {
-      font-size: 1.2em;
-      line-height: 1.2;
-      padding: 6px 8px;
-    }
+  	.height_divider {
+  	  margin-bottom: 20px;
+  	}
   	.cs_md_6 {
       width: 31%%;
       padding: 2px 3px;
     }
+    .box_title {
+      height: 45px;
+      font-size: 1.1em;
+      line-height: 1.2;
+      padding: 8px 8px 0 8px;
+    }
+    .cs_indice {
+      font-size: 1em;
+    }
   }
   @media(min-width:1100px) {
   	.cs_md_6 {
-  		padding: 2px 4px;
+  	  padding: 2px 4px;
   	}
   }
   @media(min-width:1200px) {
   	.cs_md_6 {
-  		width: 32%%;
-  		padding: 2px 3px;
+	  width: 32%%;
+	  padding: 2px 3px;
+  	}
+  	.box_title {
+  	  font-size: 1.2em;
+  	}
+  	.cs_indice {
+  	  font-size: 1.25em;
   	}
   }
   @media(min-width:1300px) {
   	.cs_md_6 {
-  		padding: 2px 4px;
+  	  padding: 2px 4px;
   	}
   }
   @media(min-width:1400px) {
   	.height_divider {
-  		margin-bottom: 40px;
+  	  margin-bottom: 40px;
   	}
   	.box_title {
-  		font-size: 1.3em;
-  		margin-bottom: 15px;
+  	  font-size: 1.3em;
+  	  margin-bottom: 15px;
   	}
   	.cs_md_6 {
-  		width: 33%%;
-  		padding: 2px 3px;
+	  width: 33%%;
+  	  padding: 2px 3px;
   	}
   	.cs_md_2 {
-  		margin-bottom: 15px;
+  	  margin-bottom: 15px;
   	}
   }
   @media(min-width:1500px) {
   	.box_title {
-  		font-size: 1.3em;
+  	  font-size: 1.3em;
   	}
   	.cs_md_6 {
-  		width: 34%%;
-		padding: 2px 1px;
+  	  width: 34%%;
+	  padding: 2px 1px;
   	}
   }
   @media(min-width:1600px) {
   	.height_divider {
-  		margin-bottom: 15px;
+  	  margin-bottom: 15px;
+  	}
+  	.box_title {
+  	  height: 35px;
+  	  padding: 12px 8px 0 8px;
   	}
   }
 </style>
@@ -731,7 +745,7 @@ HTML = """
 	  else{
 		html += '<div class="box_sup cs_mb_15" data-uk-tooltip="{pos:"left"}" title="'+obj.hint+'">';
 	  }
-	  html += '<div class="cs_box cs_content_box" style="'+estilo+'">'+obj.value+ (obj.symbol ? obj.symbol : '');
+	  html += '<div class="cs_box cs_content_box" style="'+estilo+'"><div class="cs_value">'+obj.value+ (obj.symbol ? obj.symbol : '')+'</div>';
 	  if(obj.percent_value){
 		html += '<div class="cs_content_box">(' + obj.percent_value + ')</div></div>';
 	  }
@@ -743,17 +757,17 @@ HTML = """
 		  html += '<div class="cs_md_2 cs_card">';
 			  html += '<div class="cs_text_center"><img src="/resources/images/cs_sad.png" width="45" height="45" style="background-color: '+objData.agents[0].icon_color+'; border-radius: 26px; width: 45px;height: 45px;"></div>';
 			  html += '<div class="cs_text_center cs_text">'+objData.agents[0].tipo+'</div>';
-			  html += '<h4 class="cs_text_center text"><strong>'+objData.agents[0].value+'</strong>('+objData.agents[0].percent_value+')</h4>';
+			  html += '<h4 class="cs_text_center"><strong>'+objData.agents[0].value+'</strong>('+objData.agents[0].percent_value+')</h4>';
 		  html += '</div>';
 		  html += '<div class="cs_md_2 cs_card">';
 			  html += '<div class="cs_text_center"><img src="/resources/images/cs_meh.png" width="45" height="45" style="background-color: '+objData.agents[1].icon_color+'; border-radius: 26px; width: 45px;height: 45px;"></div>';
 			  html += '<div class="cs_text_center cs_text">'+objData.agents[1].tipo+'</div>';
-			  html += '<h4 class="cs_text_center text"><strong>'+objData.agents[1].value+'</strong>('+objData.agents[1].percent_value+')</h4>';
+			  html += '<h4 class="cs_text_center"><strong>'+objData.agents[1].value+'</strong>('+objData.agents[1].percent_value+')</h4>';
 		  html += '</div>';
 		  html += '<div class="cs_md_2 cs_card">';
 			  html += '<div class="cs_text_center"><img src="/resources/images/cs_smile.png" width="45" height="45" style="background-color: '+objData.agents[2].icon_color+'; border-radius: 26px; width: 45px;height: 45px;"></div>';                    
 			  html += '<div class="cs_text_center cs_text">'+objData.agents[2].tipo+'</div>';
-			  html += '<h4 class="cs_text_center text"><strong>'+objData.agents[2].value+'</strong>('+objData.agents[2].percent_value+')</h4>';
+			  html += '<h4 class="cs_text_center"><strong>'+objData.agents[2].value+'</strong>('+objData.agents[2].percent_value+')</h4>';
 		  html += '</div>';
 	    html += ' <div class="cs_md_6 cs_card">';
 	      html += '<h2 class="cs_text_center cs_destak">'+ objData.agents[3].value +'</h2>';
